@@ -1,0 +1,72 @@
+#!/bin/sh
+# Filename:      grml-feedback
+# Purpose:       give feedback to grml
+# Author:        Martin Scharm <martin@binfalse.de>
+# Bug-Reports:   see http://grml.org/bugs/
+# License:       This file is licensed under the GPL v2.
+# Latest change: Sun Mar 12 18:00:00 CEST 2011
+################################################################################
+
+. /etc/grml/script-functions
+
+warning() {
+if [ -n "$DISPLAY" ] ; then
+    zenity --error --text "$*"
+else
+   echo $* >&2
+fi
+}
+
+usage() {
+echo "grml-feedback - give feedback to grml"
+echo ""
+echo "USAGE:\t$0 [-b BROWSER] [-u URL]"
+echo "\t\t-b BROWSER\tuse BROWSER for browsing"
+echo "\t\t-u URL\t\tbrowse to URL"
+}
+
+while getopts 'b:u:h' OPTION ; do
+  case $OPTION in
+    b) FEEDBACK_BROWSER=$OPTARG;;
+    u) FEEDBACKURL=$OPTARG;;
+    h) usage; return 0;;
+    *) warning "unrecognized parameter: \"$OPTION\"..."; return 1;;
+  esac
+done
+
+[ -f /etc/grml_version ] && URL_PARAMS="?version=$(awk '{print $2}' /etc/grml_version)"
+FEEDBACKURL=${FEEDBACKURL:-http://feedback.grml.org/submit-feedback$URL_PARAMS}
+
+PREF_X_BROWSER="hhhh x-www-browser iceweasel firefox opera"
+PREF_NONX_BROWSER="www-browser w3m links2 links lynx"
+
+# $FEEDBACK_BROWSER not provided by env or cmd line?
+if [ -z "$FEEDBACK_BROWSER" ] ; then
+  # check for x browsers
+  if [ -n "$DISPLAY" ] ; then
+    for i in $PREF_X_BROWSER; do
+      check4progs $i >/dev/null
+      if [ $? -eq 0 ] ; then
+        FEEDBACK_BROWSER=$i
+        break
+      fi
+    done
+  else
+    # check for non-x browsers
+    for i in $PREF_NONX_BROWSER; do
+      check4progs $i >/dev/null
+      if [ $? -eq 0 ] ; then
+        FEEDBACK_BROWSER=$i
+        break
+      fi
+    done
+  fi
+fi
+
+# no browser found...
+if [ -z "$FEEDBACK_BROWSER" ] ; then
+  warning "sry, no browser found..."
+  return 1
+fi
+
+$FEEDBACK_BROWSER $FEEDBACKURL

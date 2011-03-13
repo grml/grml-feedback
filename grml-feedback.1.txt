@@ -1,0 +1,52 @@
+grml-feedback(1)
+================
+:doctype: manpage
+
+
+NAME
+----
+grml-feedback - give feedback to GRML
+
+
+SYNOPSIS
+--------
+*grml-feedback* ['OPTIONS']
+
+
+DESCRIPTION
+-----------
+The grml-feedback(8) opens a browser with a website where you can easily
+provide some ideas and suggestions. All feedback is welcome, feel free
+to comment in any case!
+
+
+OPTIONS
+-------
+*-b BROWSER*::
+    Use BROWSER for browsing. If undefined it tries to find one.
+
+*-u URL*::
+    Specify the URL to the feedback website, defaults to
+    http://feedback.grml.org/submit-feedback.
+
+
+BUGS
+----
+See http://grml.org/bugs/.
+
+
+AUTHOR
+------
+grml-feedback was written by Martin Scharm <martin@binfalse.de>.
+
+
+RESOURCES
+---------
+Main web site: <http://git.grml.org/?p=grml-feedback.git>
+
+
+COPYING
+-------
+Copyright \(C) 2011+ Martin Scharm. Free use of this software is
+granted under the terms of the GNU General Public License version 2.
+

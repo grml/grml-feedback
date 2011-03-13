@@ -1,0 +1,17 @@
+Source: grml-feedback
+Section: utils
+Priority: extra
+Maintainer: Martin Scharm <martin@binfalse.de>
+Build-Depends: debhelper (>= 7)
+Build-Depends-Indep: asciidoc, docbook-xsl, xsltproc
+Standards-Version: 3.9.1
+Homepage: http://git.grml.org/?p=grml-feedback.git
+Vcs-git: git://git.grml.org/grml-feedback.git
+Vcs-Browser: http://git.grml.org/?p=grml-feedback.git
+
+Package: grml-feedback
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, grml-etc-core
+Suggests: grml-quickconfig
+Description: Script to easily give feedback to GRML, provides
+ menu entry for grml-quickconfig.

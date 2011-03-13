@@ -1,0 +1,2 @@
+grml-feedback usr/sbin
+050-grml-feedback.sh usr/share/grml-quickconfig/
