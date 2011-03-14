@@ -1,13 +1,13 @@
 # grml-feedback menu module
 
-LINE='print_line "Give GRML ${HIGHLIGHT}f${NORMAL}eedback"'
+LINE='print_line "Provide ${HIGHLIGHT}f${NORMAL}eedback (${HIGHLIGHT_NAME}grml-feedback${NORMAL})"'
 KEY=(f)
-HD_APP=grml-feedback
-FUNCTION="run $HD_APP"
+APP=grml-feedback
+FUNCTION="run $APP"
 
 display_entry() {
     . /etc/grml/script-functions
-    check4progs $HD_APP >/dev/null
+    check4progs $APP >/dev/null
     return $?
 }
 

@@ -18,19 +18,22 @@ fi
 }
 
 usage() {
-echo "grml-feedback - give feedback to grml"
-echo ""
-echo "USAGE:\t$0 [-b BROWSER] [-u URL]"
-echo "\t\t-b BROWSER\tuse BROWSER for browsing"
-echo "\t\t-u URL\t\tbrowse to URL"
+cat >&2 <<EOF
+grml-feedback - give feedback to the Grml project
+USAGE: $0 [-b BROWSER] [-u URL]
+
+  -b BROWSER   use BROWSER for browsing
+  -u URL       browse to URL
+
+EOF
 }
 
 while getopts 'b:u:h' OPTION ; do
   case $OPTION in
     b) FEEDBACK_BROWSER=$OPTARG;;
     u) FEEDBACKURL=$OPTARG;;
-    h) usage; return 0;;
-    *) warning "unrecognized parameter: \"$OPTION\"..."; return 1;;
+    h) usage; exit 1;;
+    *) warning "unrecognized parameter: \"$OPTION\"..."; exit 1;;
   esac
 done
 
