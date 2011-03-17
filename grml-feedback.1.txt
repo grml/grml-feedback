@@ -22,8 +22,6 @@ to comment in any case!
 
 OPTIONS
 -------
-*-b BROWSER*::
-    Use BROWSER for browsing. If undefined it tries to find one.
 
 *-u URL*::
     Specify the URL to the feedback website, defaults to
