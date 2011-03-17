@@ -9,6 +9,9 @@
 
 . /etc/grml/script-functions
 
+[ -f /etc/grml_version ] && URL_PARAMS="?version=$(awk '{print $2}' /etc/grml_version)"
+FEEDBACKURL=${FEEDBACKURL:-http://feedback.grml.org/submit-feedback$URL_PARAMS}
+
 warning() {
 if [ -n "$DISPLAY" ] ; then
     zenity --error --text "$*"
@@ -20,56 +23,24 @@ fi
 usage() {
 cat >&2 <<EOF
 grml-feedback - give feedback to the Grml project
-USAGE: $0 [-b BROWSER] [-u URL]
+USAGE: $0 [-u URL]
 
-  -b BROWSER   use BROWSER for browsing
-  -u URL       browse to URL
+  -u URL       browse to URL, default: $FEEDBACKURL
 
 EOF
 }
 
-while getopts 'b:u:h' OPTION ; do
+while getopts 'u:h' OPTION ; do
   case $OPTION in
-    b) FEEDBACK_BROWSER=$OPTARG;;
     u) FEEDBACKURL=$OPTARG;;
     h) usage; exit 1;;
-    *) warning "unrecognized parameter: \"$OPTION\"..."; exit 1;;
+    *) usage; exit 1;;
   esac
 done
 
-[ -f /etc/grml_version ] && URL_PARAMS="?version=$(awk '{print $2}' /etc/grml_version)"
-FEEDBACKURL=${FEEDBACKURL:-http://feedback.grml.org/submit-feedback$URL_PARAMS}
-
-PREF_X_BROWSER="x-www-browser iceweasel firefox opera"
-PREF_NONX_BROWSER="www-browser w3m links2 links lynx"
-
-# $FEEDBACK_BROWSER not provided by env or cmd line?
-if [ -z "$FEEDBACK_BROWSER" ] ; then
-  # check for x browsers
-  if [ -n "$DISPLAY" ] ; then
-    for i in $PREF_X_BROWSER; do
-      check4progs $i >/dev/null
-      if [ $? -eq 0 ] ; then
-        FEEDBACK_BROWSER=$i
-        break
-      fi
-    done
-  else
-    # check for non-x browsers
-    for i in $PREF_NONX_BROWSER; do
-      check4progs $i >/dev/null
-      if [ $? -eq 0 ] ; then
-        FEEDBACK_BROWSER=$i
-        break
-      fi
-    done
-  fi
+if [ -n "${DISPLAY}" ]; then
+    x-www-browser $FEEDBACKURL &
+else
+    www-browser $FEEDBACKURL
 fi
 
-# no browser found...
-if [ -z "$FEEDBACK_BROWSER" ] ; then
-  warning "sry, no browser found..."
-  return 1
-fi
-
-$FEEDBACK_BROWSER $FEEDBACKURL
