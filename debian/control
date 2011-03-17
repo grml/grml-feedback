@@ -1,7 +1,7 @@
 Source: grml-feedback
 Section: utils
 Priority: extra
-Maintainer: Martin Scharm <martin@binfalse.de>
+Maintainer: Grml Team <team@grml.org>
 Build-Depends: debhelper (>= 7)
 Build-Depends-Indep: asciidoc, docbook-xsl, xsltproc
 Standards-Version: 3.9.1
