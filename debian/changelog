@@ -1,5 +1,15 @@
 grml-feedback (0.1) unstable; urgency=low
 
-  * Initial release.
+  [ Martin Scharm ]
+  * Initial version.
 
- -- Martin Scharm <martin@binfalse.de>  Sat, 12 Mar 2011 18:00:00 +0100
+  [ Ulrich Dangel ]
+  * [9b317c8] Changed wording in quickconfig menu and adjusted help message.
+  * [9e47c8e] Also remove -b option from manpage
+
+  [ Christian Hofstaedtler ]
+  * [832f918] remove 'hhhh' from list of X11 browsers
+  * [3c0bbf0] only use (x-)www-browser and background X11 browsers
+  * [9423f3b] Set Maintainer to Grml Team.
+
+ -- Christian Hofstaedtler <ch@grml.org>  Fri, 18 Mar 2011 00:13:31 +0100
