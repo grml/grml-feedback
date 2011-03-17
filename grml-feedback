@@ -12,14 +12,6 @@
 [ -f /etc/grml_version ] && URL_PARAMS="?version=$(awk '{print $2}' /etc/grml_version)"
 FEEDBACKURL=${FEEDBACKURL:-http://feedback.grml.org/submit-feedback$URL_PARAMS}
 
-warning() {
-if [ -n "$DISPLAY" ] ; then
-    zenity --error --text "$*"
-else
-   echo $* >&2
-fi
-}
-
 usage() {
 cat >&2 <<EOF
 grml-feedback - give feedback to the Grml project
