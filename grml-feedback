@@ -40,7 +40,7 @@ done
 [ -f /etc/grml_version ] && URL_PARAMS="?version=$(awk '{print $2}' /etc/grml_version)"
 FEEDBACKURL=${FEEDBACKURL:-http://feedback.grml.org/submit-feedback$URL_PARAMS}
 
-PREF_X_BROWSER="hhhh x-www-browser iceweasel firefox opera"
+PREF_X_BROWSER="x-www-browser iceweasel firefox opera"
 PREF_NONX_BROWSER="www-browser w3m links2 links lynx"
 
 # $FEEDBACK_BROWSER not provided by env or cmd line?
