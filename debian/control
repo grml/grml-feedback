@@ -8,6 +8,8 @@ Standards-Version: 3.9.1
 Homepage: http://git.grml.org/?p=grml-feedback.git
 Vcs-git: git://git.grml.org/grml-feedback.git
 Vcs-Browser: http://git.grml.org/?p=grml-feedback.git
+Origin: Grml
+Bugs: mailto:bugs@grml.org
 
 Package: grml-feedback
 Architecture: all
