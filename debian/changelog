@@ -1,3 +1,11 @@
+grml-feedback (1.0) unstable; urgency=low
+
+  * [976291b] Add debian/control headers Origin, Bugs
+  * [c6bc264] Turn off xsltproc validations
+  * [a871cea] Standards-Version 3.9.2, debhelper 8
+
+ -- Christian Hofstaedtler <ch@grml.org>  Fri, 14 Oct 2011 02:06:00 +0200
+
 grml-feedback (0.1) unstable; urgency=low
 
   [ Martin Scharm ]
