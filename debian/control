@@ -6,8 +6,8 @@ Build-Depends: debhelper (>= 8)
 Build-Depends-Indep: asciidoc, docbook-xsl, xsltproc
 Standards-Version: 3.9.2
 Homepage: http://git.grml.org/?p=grml-feedback.git
-Vcs-git: git://git.grml.org/grml-feedback.git
-Vcs-Browser: http://git.grml.org/?p=grml-feedback.git
+Vcs-git: https://github.com/grml/grml-feedback.git
+Vcs-Browser: https://github.com/grml/grml-feedback
 Origin: Grml
 Bugs: mailto:bugs@grml.org
 
